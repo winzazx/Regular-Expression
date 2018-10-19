@@ -45,11 +45,14 @@ public class Regular {
 	      rex(pattern_date_field,date,"Date-Send");
 	      
 	      
-	      String patternsubject = "Subject: .*";
+	      String patternsubject = "Subject: \\w*";
 	      String subject = rex(patternsubject,contents[i]);
 	      
 	      String pattern_subject = "\\s.*";	     
 	      rex(pattern_subject,subject,"Subject");
+	      
+	      String pattern_body = "Status:.+";
+	      String body = rex(pattern_body,contents[i],"Body");
 	      
 	      
 	      
@@ -57,7 +60,7 @@ public class Regular {
 	     }
  }
 	public static String rex(String pattern,String content,String key) {
-		Pattern r = Pattern.compile(pattern);
+		Pattern r = Pattern.compile(pattern,Pattern.DOTALL);
 	     Matcher m = r.matcher(content);
 	     if (m.find()) {
 	         System.out.println(key+" : " + m.group(0) );
@@ -82,7 +85,7 @@ public class Regular {
 	
 	public static String getText () {
 		String line="";
-		String path = "C:\\Users\\Winza\\eclipse-workspace\\RegularEx\\assets\\test_emails.txt";
+		String path = "C:\\Users\\Winza\\eclipse-workspace\\Regular-Expression\\assets\\test_emails.txt";
 		File file = new File(path);
 		StringBuilder sb = new StringBuilder();
 		
@@ -95,7 +98,7 @@ public class Regular {
 			}
 			br.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		String text = sb.toString();
