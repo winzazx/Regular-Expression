@@ -45,7 +45,7 @@ public class Regular {
 	      rex(pattern_date_field,date,"Date-Send");
 	      
 	      
-	      String patternsubject = "Subject: \\w*";
+	      String patternsubject = "Subject: .*";
 	      String subject = rex(patternsubject,contents[i]);
 	      
 	      String pattern_subject = "\\s.*";	     
