@@ -51,6 +51,8 @@ public class Regular {
 	      String pattern_subject = "\\s.*";	     
 	      rex(pattern_subject,subject,"Subject");
 	      
+	      //test
+	      
 	      
 	      
 	      System.out.println();
