@@ -60,16 +60,22 @@ public class Regular {
 	      rex(pattern_subject,subject,"Subject");
 	      
 	      String pattern_body = "Status:.+";
-	      String body = rex(pattern_body,contents[i],"Body");
+	      String body = rexbody(pattern_body,contents[i]);
+	      
+	      String [] bodysplit = body.split("Status:");
+	      bodysplit[1] = bodysplit[1].substring(3, bodysplit[1].length());
+ 
+	      System.out.println("Body : "+ bodysplit[1]);
 	      /////////////////////////////////////////////////////////////
 	      
 	      System.out.println("--------------------------------");
 	      System.out.println("--------------------------------");
 	      System.out.println();
+	      
 	     }
  }
 	public static String rex(String pattern,String content,String key) {
-		 Pattern r = Pattern.compile(pattern,Pattern.DOTALL);
+		Pattern r = Pattern.compile(pattern,Pattern.DOTALL);
 	     Matcher m = r.matcher(content);
 	     if (m.find()) {
 	         System.out.println(key+" : " + m.group(0) );
@@ -79,7 +85,7 @@ public class Regular {
          return "None";
 	     }
 	         
-	     return m.group();
+	     return m.group(0);
 		
 	}
 	public static String rex(String pattern,String content) {
@@ -87,14 +93,22 @@ public class Regular {
 	     Matcher m = r.matcher(content);
 	     m.find();
 	         
-	     return m.group();
+	     return m.group(0);
+		
+	}
+	public static String rexbody(String pattern,String content) {
+		Pattern r = Pattern.compile(pattern,Pattern.DOTALL);
+	     Matcher m = r.matcher(content);
+	     m.find();
+	         
+	     return m.group(0);
 		
 	}
 	
 	
 	public static String getText () {
 		String line="";
-		String path = "C:\\Users\\win-z\\Desktop\\Regular-Expression\\assets\\test_emails.txt";
+		String path = "/Users/winzazx/Desktop/Regular-Expression/assets/test_emails.txt";
 		File file = new File(path);
 		StringBuilder sb = new StringBuilder();
 		
