@@ -20,15 +20,20 @@ public class Regular {
 
 	      for(int i =1;i<contents.length;i++)
 	      {System.out.println("----- Email No. "+i+" -----");
+	      ////////////////////////Email-Sender/////////////////////////
 	      String patternfrom = "From:.*";
+	      
 	      String from = rex(patternfrom,contents[i]);
 	      
 	      String pattern_sender = "\\w\\S*@.*\\w";	     
-	      rex(pattern_sender,from,"Email-Sender");
+	      String email =rex(pattern_sender,from,"Email-Sender");
+	     
 	      
 	      String Pattern_name = "\".*\"";
 	      rex(Pattern_name,from,"Name-Sender");
+	      /////////////////////////////////////////////////////////////
 	      
+	      //////////////////////// Recipient //////////////////////////
 	      String Pattern_to  = "To:.*";
 	      String to = rex(Pattern_to,contents[i]);
 	      
@@ -37,14 +42,17 @@ public class Regular {
 	      
 	      String pattern_recipient_name  = ":.*<";	     
 	      rex(pattern_recipient_name ,to,"Recipient-Name");
+	      /////////////////////////////////////////////////////////////
 	      
+	      //////////////////////////Date///////////////////////////////
 	      String patterndate = "Date:.*";
 	      String date = rex(patterndate,contents[i]);
 	      
 	      String pattern_date_field = "\\d+\\s\\w+\\s\\d+";	     
 	      rex(pattern_date_field,date,"Date-Send");
+          /////////////////////////////////////////////////////////////
 	      
-	      
+	      //////////////////////Subject & Body ////////////////////////
 	      String patternsubject = "Subject: .*";
 	      String subject = rex(patternsubject,contents[i]);
 	      
@@ -53,14 +61,15 @@ public class Regular {
 	      
 	      String pattern_body = "Status:.+";
 	      String body = rex(pattern_body,contents[i],"Body");
+	      /////////////////////////////////////////////////////////////
 	      
-	      
-	      
+	      System.out.println("--------------------------------");
+	      System.out.println("--------------------------------");
 	      System.out.println();
 	     }
  }
 	public static String rex(String pattern,String content,String key) {
-		Pattern r = Pattern.compile(pattern,Pattern.DOTALL);
+		 Pattern r = Pattern.compile(pattern,Pattern.DOTALL);
 	     Matcher m = r.matcher(content);
 	     if (m.find()) {
 	         System.out.println(key+" : " + m.group(0) );
@@ -70,7 +79,7 @@ public class Regular {
          return "None";
 	     }
 	         
-	     return m.group(0);
+	     return m.group();
 		
 	}
 	public static String rex(String pattern,String content) {
@@ -78,14 +87,14 @@ public class Regular {
 	     Matcher m = r.matcher(content);
 	     m.find();
 	         
-	     return m.group(0);
+	     return m.group();
 		
 	}
 	
 	
 	public static String getText () {
 		String line="";
-		String path = "C:\\Users\\Winza\\eclipse-workspace\\Regular-Expression\\assets\\test_emails.txt";
+		String path = "C:\\Users\\win-z\\Desktop\\Regular-Expression\\assets\\test_emails.txt";
 		File file = new File(path);
 		StringBuilder sb = new StringBuilder();
 		
@@ -105,7 +114,7 @@ public class Regular {
         return text;
     }
 	
-	
+
 	
 }
 
