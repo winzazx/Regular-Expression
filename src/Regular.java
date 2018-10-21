@@ -12,7 +12,7 @@ public class Regular {
 
 		
 	      String everything = getText();
-	      String[] contents = everything.split("From r");
+	      String[] contents = everything.split("From r\\s");
 	      String temp="";
 	      
 	      
@@ -25,7 +25,7 @@ public class Regular {
 	      
 	      String from = rex(patternfrom,contents[i]);
 	      
-	      String pattern_sender = "\\w\\S*@.*\\w";	     
+	      String pattern_sender = "\\w\\S+@.*\\w";	     
 	      String email =rex(pattern_sender,from,"Email-Sender");
 	     
 	      
@@ -108,7 +108,8 @@ public class Regular {
 	
 	public static String getText () {
 		String line="";
-		String path = "/Users/winzazx/Desktop/Regular-Expression/assets/test_emails.txt";
+		//String path = "/Users/winzazx/Desktop/Regular-Expression/assets/test_emails.txt";
+		String path = "C:\\Users\\win-z\\Desktop\\Regular-Expression\\assets\\test_emails.txt";
 		File file = new File(path);
 		StringBuilder sb = new StringBuilder();
 		
