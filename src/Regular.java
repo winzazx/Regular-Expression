@@ -1,7 +1,6 @@
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -10,7 +9,7 @@ import java.io.IOException;
 public class Regular   {
 	public static void main(String[]args) {
 		
-	      String everything = getText("C:\\Users\\Winza\\eclipse-workspace\\Regular-Expression\\assets\\test_emails.txt");
+	      String everything = getText("C:\\Users\\win-z\\Desktop\\Regular-Expression\\assets\\test_emails.txt");
 	      String[] contents = everything.split("From r\\s");
 
 	      System.out.println("Total Email Found : "+(contents.length-1));
@@ -74,7 +73,7 @@ public class Regular   {
 	     }
  }
 	public static String rex(String pattern,String content,String key) {
-		Pattern r = Pattern.compile(pattern,Pattern.DOTALL);
+		Pattern r = Pattern.compile(pattern,Pattern.DOTALL); //Patterm.CASE_INSENSITIVE
 	     Matcher m = r.matcher(content);
 	     if (m.find()) {
 	         System.out.println(key+" : " + m.group(0) );
@@ -104,6 +103,12 @@ public class Regular   {
 	     }
 		
 	}
+	
+	
+	
+	
+	
+	
 	public static void count(String pattern,String content,Boolean all) {
 		Pattern r;
 		if (all) {
@@ -138,9 +143,6 @@ public class Regular   {
 	        	rex(patterns,content,contents[i]);
 	        }
 	        */
-	       
-	       
-		
 	}
 	
 
