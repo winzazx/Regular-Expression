@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Regular   {
 	public static void main(String[]args) {
 		
-	      String everything = getText("C:\\Users\\win-z\\Desktop\\Regular-Expression\\assets\\test_emails.txt");
+	      String everything = getText("C:\\Users\\win-z\\Desktop\\Regular-Expression\\assets\\fradulent_emails.txt");
 	      String[] contents = everything.split("From r\\s");
 
 	      System.out.println("Total Email Found : "+(contents.length-1));
@@ -136,14 +136,18 @@ public class Regular   {
 	            
 	        }
 	        /*
-	        String country = getText("C:\\Users\\Winza\\eclipse-workspace\\Regular-Expression\\assets\\countries-list.txt");
+	        String country = getText("C:\\Users\\win-z\\Desktop\\Regular-Expression\\assets\\countries-list.txt");
 	        String[] contents = country.split("\\r?\\n");
 	        for (int i=0;i<content.length();i++) {
 	        	String patterns = contents[i];
 	        	rex(patterns,content,contents[i]);
 	        }
 	        */
+	        
 	}
+	
+	
+	
 	
 
 	

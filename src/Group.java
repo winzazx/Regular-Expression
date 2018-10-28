@@ -4,8 +4,8 @@ import java.util.regex.Pattern;
 public class Group {
 
     public static void main(String args[]) {
-        String line = "This order was placed for QT3000! OK?"; 
-        String pattern = "(.*)(\\d+)(.*)";
+        String line = "2016-02-11"; 
+        String pattern = "(\\d{4})-(\\d{2})-(\\d{2})";
 
         // Create a Pattern object
         Pattern r = Pattern.compile(pattern);
@@ -17,6 +17,7 @@ public class Group {
             System.out.println("Found value: " + m.group(0));
             System.out.println("Found value: " + m.group(1));
             System.out.println("Found value: " + m.group(2));
+            System.out.println("Found value: " + m.group(3));
         } else {
             System.out.println("NO MATCH");
         }
